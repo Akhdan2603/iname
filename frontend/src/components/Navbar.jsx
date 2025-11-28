@@ -13,7 +13,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            <Link to="/" className="logo">KonsultanKita</Link>
+            <Link to="/" className="logo">PT Iname Utama</Link>
             <div className="nav-links">
                 <Link to="/">Beranda</Link>
                 <Link to="/about">Tentang Kami</Link>

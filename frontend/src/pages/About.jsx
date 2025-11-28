@@ -5,7 +5,7 @@ const About = () => {
         <div className="about-page" style={{background: 'white', padding: '2rem', borderRadius: '8px'}}>
             <h1 style={{color: 'var(--primary-color)', marginBottom: '1.5rem'}}>Tentang Kami</h1>
             <p style={{marginBottom: '1rem'}}>
-                KonsultanKita adalah perusahaan konsultan yang bergerak di bidang perencanaan dan pengawasan pembangunan.
+                PT Iname Utama adalah perusahaan konsultan yang bergerak di bidang perencanaan dan pengawasan pembangunan.
                 Kami berdedikasi untuk memberikan solusi terbaik bagi setiap kebutuhan klien kami, mulai dari perencanaan
                 infrastruktur hingga manajemen proyek yang kompleks.
             </p>

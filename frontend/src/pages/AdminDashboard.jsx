@@ -11,16 +11,35 @@ const AdminDashboard = () => {
     }, []);
 
     const fetchProjects = async () => {
-        try {
-            const response = await api.get('/projects');
-            setProjects(response.data);
-        } catch (err) {
-            console.error(err);
-            alert('Gagal memuat data proyek.');
-        } finally {
-            setLoading(false);
-        }
-    };
+        try {
+            const response = await api.get('/projects');
+            
+            // --- TAMBAHKAN LOG INI ---
+            console.log("DATA DARI SERVER:", response.data);
+            console.log("TIPE DATA:", typeof response.data);
+            // -------------------------
+
+            // Logika Penanganan Data yang Lebih Aman
+            if (Array.isArray(response.data)) {
+                // Kasus 1: Backend kirim langsung [ {...}, {...} ]
+                setProjects(response.data);
+            } else if (response.data && response.data.data && Array.isArray(response.data.data)) {
+                // Kasus 2: Backend kirim { status: "success", data: [ ... ] }
+                setProjects(response.data.data);
+            } else {
+                // Kasus 3: Backend error atau kirim HTML
+                console.error("Format data salah, diubah ke array kosong.");
+                setProjects([]); 
+            }
+
+        } catch (err) {
+            console.error(err);
+            setProjects([]); // Pastikan tetap array kosong kalau error
+            alert('Gagal memuat data proyek.');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleDelete = async (id) => {
         if (window.confirm('Apakah Anda yakin ingin menghapus proyek ini?')) {
@@ -54,7 +73,7 @@ const AdminDashboard = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {projects.map((project) => (
+                        {Array.isArray(projects) && projects.map((project) => (
                             <tr key={project.id}>
                                 <td>{project.title}</td>
                                 <td>{project.client_name}</td>

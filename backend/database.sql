@@ -1,6 +1,6 @@
 -- Database Creation
-CREATE DATABASE IF NOT EXISTS portfolio_db;
-USE portfolio_db;
+CREATE DATABASE IF NOT EXISTS db_portfolio;
+USE db_portfolio;
 
 -- Table: admin
 CREATE TABLE IF NOT EXISTS admin (
