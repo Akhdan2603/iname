@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Jangan rewrite jika request ditujukan ke folder /api/
+  # Ini membiarkan backend menangani requestnya sendiri
+  RewriteRule ^api/ - [L,NC]
+
+  # SPA Routing: Jika file/folder tidak ada, arahkan ke index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
