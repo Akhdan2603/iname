@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Ganti URL ini sesuai dengan URL backend Anda saat deploy
 // Untuk development lokal, biasanya http://localhost:8000
-const API_URL = 'http://localhost:8000';
+const API_URL = 'iname.page.gd';
 
 const api = axios.create({
     baseURL: API_URL,
